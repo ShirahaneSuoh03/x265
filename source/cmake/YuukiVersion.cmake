@@ -2,7 +2,7 @@
 
 find_package(Git)
 
-set(MOD_BUILD Yuuki)
+set(MOD_BUILD Mizore)
 
 execute_process(COMMAND
     ${GIT_EXECUTABLE} describe --tags --first-parent --match=[0-9].[0-9]* HEAD
@@ -11,7 +11,7 @@ execute_process(COMMAND
         ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
     )
 
-if("${MOD_BUILD}" STREQUAL "Yuuki")
+if("${MOD_BUILD}" STREQUAL "Mizore")
     set(X265_BASE_BRANCH "stable")
 else()
     set(X265_BASE_BRANCH "old-stable")
