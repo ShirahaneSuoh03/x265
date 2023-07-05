@@ -64,7 +64,7 @@ namespace X265_NS {
 #define OPT(value) (value ? "enabled" : "disabled")
 #define H0 printf
 #define H1 if (level >= X265_LOG_DEBUG) printf
-
+        H0("\nThis is test build of x265\n");
         H0("\nSyntax: x265 [options] infile [-o] outfile\n");
         H0("    infile can be YUV or Y4M, or frame server format\n");
         H0("    outfile is raw HEVC bitstream\n");
