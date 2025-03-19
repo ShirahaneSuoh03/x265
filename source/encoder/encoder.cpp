@@ -3653,16 +3653,17 @@ void Encoder::configure(x265_param *p)
         p->bEnableAMP = false;
 
     /* In 444, chroma gets twice as much resolution, so halve quality when psy-rd is enabled */
-    if (p->internalCsp == X265_CSP_I444 && p->psyRd)
-    {
-        if (!p->cbQpOffset && !p->crQpOffset)
-        {
-            p->cbQpOffset = MAX_CHROMA_QP_OFFSET / 2;
-            p->crQpOffset = MAX_CHROMA_QP_OFFSET / 2;
-            x265_log(p, X265_LOG_WARNING, "halving the quality when psy-rd is enabled for 444 input."
-                     " Setting cbQpOffset = %d and crQpOffset = %d\n", p->cbQpOffset, p->crQpOffset);
-        }
-    }
+    /* Commented out to make both qpoffs = 0 possible for 444 when psy-rd enabled */
+    // if (p->internalCsp == X265_CSP_I444 && p->psyRd)
+    // {
+    //     if (!p->cbQpOffset && !p->crQpOffset)
+    //     {
+    //         p->cbQpOffset = MAX_CHROMA_QP_OFFSET / 2;
+    //         p->crQpOffset = MAX_CHROMA_QP_OFFSET / 2;
+    //         x265_log(p, X265_LOG_WARNING, "halving the quality when psy-rd is enabled for 444 input."
+    //                  " Setting cbQpOffset = %d and crQpOffset = %d\n", p->cbQpOffset, p->crQpOffset);
+    //     }
+    // }
 
     if (p->bLossless)
     {
