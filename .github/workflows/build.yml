@@ -26,6 +26,8 @@ jobs:
         - znver1
         - znver2
         - znver3
+        - znver4
+        - zever5
         toolchain:
         - clang
         #- ucrt
